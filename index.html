@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Responsive RDAC landing page focused entirely on the supplied artwork." />
+  <title>RDAC Artwork Landing</title>
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --frame: rgba(255,255,255,0.1);
+      --glow: rgba(255,255,255,0.08);
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --radius: clamp(1rem, 2vw, 2rem);
+      --space: clamp(0.75rem, 2vw, 1.5rem);
+      --max-width: min(94vw, 1440px);
+    }
+
+    * , *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: var(--space);
+      background:
+        radial-gradient(circle at top, var(--glow), transparent 28%),
+        linear-gradient(180deg, #050505 0%, var(--bg) 100%);
+      overflow-x: hidden;
+    }
+
+    main {
+      width: 100%;
+      display: grid;
+      place-items: center;
+    }
+
+    .image-shell {
+      width: var(--max-width);
+      border: 1px solid var(--frame);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #111;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      aspect-ratio: 16 / 9;
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --max-width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <figure class="image-shell">
+      <img src="./assets/rdac-cover.jpg" alt="RDAC cover artwork with silver lettering and a spade symbol on a black background." width="1600" height="900" loading="eager" decoding="async" />
+    </figure>
+  </main>
+</body>
+</html>
