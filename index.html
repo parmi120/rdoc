@@ -14,9 +14,6 @@
       --radius: clamp(1rem, 2vw, 2rem);
       --space: clamp(0.75rem, 2vw, 1.5rem);
       --max-width: min(94vw, 1440px);
-      --link: #ffffff;
-      --link-hover: #d8d8d8;
-      --link-underline: rgba(255,255,255,0.55);
     }
 
     *, *::before, *::after {
@@ -65,38 +62,42 @@
       aspect-ratio: 16 / 9;
     }
 
-    .link-row {
+    .hotspot {
       position: absolute;
-      left: 50%;
-      bottom: clamp(1rem, 3vw, 2rem);
-      transform: translateX(-50%);
-      display: flex;
-      gap: clamp(0.75rem, 2vw, 1.5rem);
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 0.5rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .link-row a {
-      color: var(--link);
-      text-decoration: underline;
-      text-decoration-color: var(--link-underline);
-      text-underline-offset: 0.18em;
-      font-size: clamp(0.8rem, 1.2vw, 1rem);
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      transition: color 0.2s ease, text-decoration-color 0.2s ease;
-    }
-
-    .link-row a:hover,
-    .link-row a:focus-visible {
-      color: var(--link-hover);
-      text-decoration-color: currentColor;
+      display: block;
+      background: transparent;
+      border: 0;
+      text-decoration: none;
+      z-index: 2;
+      cursor: pointer;
       outline: none;
+    }
+
+    .hotspot:focus-visible {
+      outline: 2px solid rgba(255,255,255,0.7);
+      outline-offset: 2px;
+    }
+
+    /* Adjust these to sit directly over the words on the image */
+    .hotspot.full-volume {
+      left: 12%;
+      top: 44%;
+      width: 17%;
+      height: 7%;
+    }
+
+    .hotspot.v29-music {
+      left: 39%;
+      top: 44%;
+      width: 14%;
+      height: 7%;
+    }
+
+    .hotspot.amplivibe {
+      left: 63%;
+      top: 44%;
+      width: 16%;
+      height: 7%;
     }
 
     @media (max-width: 640px) {
@@ -104,20 +105,31 @@
         --max-width: 100%;
       }
 
-      .link-row {
-        bottom: clamp(0.75rem, 3vw, 1.25rem);
-        gap: 0.75rem;
-        width: calc(100% - 1rem);
+      .hotspot.full-volume {
+        left: 10%;
+        top: 42%;
+        width: 20%;
+        height: 8%;
+      }
+
+      .hotspot.v29-music {
+        left: 36%;
+        top: 42%;
+        width: 18%;
+        height: 8%;
+      }
+
+      .hotspot.amplivibe {
+        left: 61%;
+        top: 42%;
+        width: 19%;
+        height: 8%;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
-      }
-
-      .link-row a {
-        transition: none;
       }
     }
   </style>
@@ -127,11 +139,29 @@
     <figure class="image-shell">
       <img src="./rdac-cover.jpg" alt="RDAC cover artwork with silver lettering and a spade symbol on a black background." width="1600" height="900" loading="eager" decoding="async" />
 
-      <figcaption class="link-row" aria-label="Related links">
-        <a href="https://example.com/full-volume" target="_blank" rel="noopener noreferrer">full volume</a>
-        <a href="https://example.com/v29-music" target="_blank" rel="noopener noreferrer">V29 music</a>
-        <a href="https://example.com/amplivibe" target="_blank" rel="noopener noreferrer">amplivibe</a>
-      </figcaption>
+      <a
+        class="hotspot full-volume"
+        href="https://example.com/full-volume"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Full volume"
+      ></a>
+
+      <a
+        class="hotspot v29-music"
+        href="https://example.com/v29-music"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="V29 music"
+      ></a>
+
+      <a
+        class="hotspot amplivibe"
+        href="https://example.com/amplivibe"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="AmpliVibe"
+      ></a>
     </figure>
   </main>
 </body>
