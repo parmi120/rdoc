@@ -9,42 +9,192 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#0b0c0f; --text:#f2f2f2; --muted:rgba(255,255,255,.78); --display:'Archivo Black',sans-serif; --body:'Inter',sans-serif; }
+    :root {
+      --bg:#0b0c0f;
+      --text:#f2f2f2;
+      --muted:rgba(255,255,255,.78);
+      --display:'Archivo Black',sans-serif;
+      --body:'Inter',sans-serif;
+    }
+
     *{box-sizing:border-box}
-    html,body{margin:0;min-height:100%;background:var(--bg)}
-    body{min-height:100vh;display:grid;place-items:center;overflow-x:hidden;font-family:var(--body)}
-    .page{position:relative;width:100vw;min-height:100vh;overflow:hidden;background:var(--bg)}
-    .hero{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;z-index:0;transform:scale(.92);transform-origin:center center}
-    .overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.03), rgba(0,0,0,.10) 42%, rgba(0,0,0,.24) 72%, rgba(0,0,0,.38));pointer-events:none;z-index:1}
-    .content{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-start;justify-content:center;padding:0 clamp(14px,4vw,40px)}
-    .button-row{width:min(92vw,1100px);display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(8px,1.6vw,20px);align-items:center;transform:translateY(68vh)}
-    .btn{display:flex;align-items:center;justify-content:center;min-height:clamp(32px,5.2vw,60px);padding:clamp(7px,1.2vw,13px);border-radius:clamp(14px,2vw,24px);text-decoration:none;color:var(--text);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 12px 24px rgba(0,0,0,.24);transition:transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;overflow:hidden}
-    .btn:hover,.btn:focus-visible{transform:translateY(-2px);background:linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.05));border-color:rgba(255,255,255,.28);outline:none;box-shadow:0 16px 30px rgba(0,0,0,.30)}
-    .btn span{position:relative;z-index:1;font-family:var(--display);text-transform:uppercase;text-align:center;line-height:.95;text-shadow:0 2px 12px rgba(0,0,0,.25);white-space:nowrap}
-    .full{font-size:clamp(.52rem,.85vw,.82rem);letter-spacing:.08em;transform:scaleX(1.03) scaleY(.86)}
-    .v29{display:flex;flex-direction:column;align-items:center;justify-content:center}
-    .v29 .top{font-size:clamp(.95rem,2.1vw,2rem);font-style:italic;letter-spacing:-.02em}
-    .v29 .sub{font-size:clamp(.3rem,.52vw,.52rem);letter-spacing:.34em;color:var(--muted);padding-left:.34em;margin-top:.06rem}
-    .amp{font-size:clamp(.5rem,.82vw,.78rem);letter-spacing:.03em;transform:scaleX(1.02)}
+
+    html,body{
+      margin:0;
+      min-height:100%;
+      background:var(--bg);
+    }
+
+    body{
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      font-family:var(--body);
+    }
+
+    .page{
+      position:relative;
+      width:100vw;
+      height:100dvh;
+      overflow:hidden;
+      background:var(--bg);
+    }
+
+    .hero-wrap{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--bg);
+      z-index:0;
+    }
+
+    .hero{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center center;
+      display:block;
+      background:var(--bg);
+      transform:none;
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.03),
+        rgba(0,0,0,.10) 42%,
+        rgba(0,0,0,.24) 72%,
+        rgba(0,0,0,.38)
+      );
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .content{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:0 clamp(14px,4vw,40px);
+    }
+
+    .button-row{
+      width:min(92vw,1100px);
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:clamp(8px,1.6vw,20px);
+      align-items:center;
+      transform:translateY(68vh);
+    }
+
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:clamp(32px,5.2vw,60px);
+      padding:clamp(7px,1.2vw,13px);
+      border-radius:clamp(14px,2vw,24px);
+      text-decoration:none;
+      color:var(--text);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      box-shadow:0 12px 24px rgba(0,0,0,.24);
+      transition:transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+      overflow:hidden;
+    }
+
+    .btn:hover,.btn:focus-visible{
+      transform:translateY(-2px);
+      background:linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.05));
+      border-color:rgba(255,255,255,.28);
+      outline:none;
+      box-shadow:0 16px 30px rgba(0,0,0,.30);
+    }
+
+    .btn span{
+      position:relative;
+      z-index:1;
+      font-family:var(--display);
+      text-transform:uppercase;
+      text-align:center;
+      line-height:.95;
+      text-shadow:0 2px 12px rgba(0,0,0,.25);
+      white-space:nowrap;
+    }
+
+    .full{
+      font-size:clamp(.52rem,.85vw,.82rem);
+      letter-spacing:.08em;
+      transform:scaleX(1.03) scaleY(.86);
+    }
+
+    .v29{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .v29 .top{
+      font-size:clamp(.95rem,2.1vw,2rem);
+      font-style:italic;
+      letter-spacing:-.02em;
+    }
+
+    .v29 .sub{
+      font-size:clamp(.3rem,.52vw,.52rem);
+      letter-spacing:.34em;
+      color:var(--muted);
+      padding-left:.34em;
+      margin-top:.06rem;
+    }
+
+    .amp{
+      font-size:clamp(.5rem,.82vw,.78rem);
+      letter-spacing:.03em;
+      transform:scaleX(1.02);
+    }
+
     @media (max-width:700px){
       .content{padding:10px}
-      .button-row{width:94vw;gap:7px;transform:translateY(64vh)}
+      .button-row{
+        width:94vw;
+        gap:7px;
+        transform:translateY(64vh);
+      }
       .btn{min-height:clamp(30px,9vw,48px);border-radius:14px}
       .full{font-size:clamp(.38rem,1.9vw,.56rem)}
       .v29 .top{font-size:clamp(.72rem,3.2vw,1.05rem)}
       .v29 .sub{font-size:clamp(.24rem,.9vw,.34rem);letter-spacing:.18em}
       .amp{font-size:clamp(.36rem,1.7vw,.52rem)}
     }
+
     @media (max-width:420px){
-      .button-row{gap:6px;transform:translateY(62vh)}
+      .button-row{
+        gap:6px;
+        transform:translateY(62vh);
+      }
       .btn{padding:6px 6px}
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <img class="hero" src="rdoc without writing.jpg" alt="RDAC logo artwork" width="1366" height="768" loading="eager" decoding="async" />
+    <div class="hero-wrap">
+      <img class="hero" src="rdoc without writing.jpg" alt="RDAC logo artwork" width="1366" height="768" loading="eager" decoding="async" />
+    </div>
+
     <div class="overlay" aria-hidden="true"></div>
+
     <div class="content">
       <nav class="button-row" aria-label="Main destination buttons">
         <a class="btn" href="https://www.instagram.com/full.v0lume" target="_blank" rel="noopener noreferrer" aria-label="Full Volume">
