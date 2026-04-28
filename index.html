@@ -3,221 +3,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Responsive RDAC landing page with invisible clickable hotspots on the artwork." />
+  <meta name="description" content="RDAC responsive landing page for GitHub Pages with custom destination buttons." />
   <title>RDAC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0b0b;
-      --frame: rgba(255,255,255,0.1);
-      --glow: rgba(255,255,255,0.08);
-      --shadow: 0 20px 60px rgba(0,0,0,0.45);
-      --radius: clamp(1rem, 2vw, 2rem);
-      --space: clamp(0.75rem, 2vw, 1.5rem);
-      --max-width: min(94vw, 1440px);
+      --bg: #0a0b0d;
+      --text: #efefef;
+      --muted: rgba(255,255,255,.8);
+      --display: 'Archivo Black', sans-serif;
+      --body: 'Inter', sans-serif;
     }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      min-height: 100%;
-    }
-
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--bg); }
     body {
-      min-height: 100dvh;
+      min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: var(--space);
-      background:
-        radial-gradient(circle at top, var(--glow), transparent 28%),
-        linear-gradient(180deg, #050505 0%, var(--bg) 100%);
       overflow-x: hidden;
-      font-family: Arial, sans-serif;
+      font-family: var(--body);
     }
-
-    main {
-      width: 100%;
-      display: grid;
-      place-items: center;
-    }
-
-    .image-shell {
-      width: var(--max-width);
-      border: 1px solid var(--frame);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background: #111;
+    .hero {
       position: relative;
-      line-height: 0;
-    }
-
-    img {
-      display: block;
       width: 100%;
-      height: auto;
-      object-fit: contain;
-      aspect-ratio: 16 / 9;
-      pointer-events: none;
-      user-select: none;
+      max-width: 1800px;
+      min-height: 100vh;
+      overflow: hidden;
     }
-
-    .hotspot {
+    .hero-media {
       position: absolute;
-      display: block;
-      background: transparent;
-      border: 0;
-      text-decoration: none;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.05), rgba(0,0,0,.14) 50%, rgba(0,0,0,.38) 78%, rgba(0,0,0,.58));
+      z-index: 1;
+      pointer-events: none;
+    }
+    .button-row {
+      position: absolute;
+      left: 50%;
+      bottom: 11.1%;
+      transform: translateX(-50%);
       z-index: 2;
-      cursor: pointer;
+      width: min(560px, 78vw);
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-end;
+      gap: clamp(14px, 2vw, 26px);
+      flex-wrap: nowrap;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: transform .2s ease, opacity .2s ease;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,.36));
+    }
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      opacity: .96;
       outline: none;
     }
-
-    .hotspot:focus-visible {
-      outline: 2px solid rgba(255,255,255,0.7);
-      outline-offset: 2px;
+    .full {
+      font-family: var(--display);
+      font-size: clamp(.78rem, 1.05vw, .98rem);
+      letter-spacing: .06em;
+      transform: scaleX(1.02) scaleY(.8);
     }
-
-    .hotspot.full-volume {
-      left: 24%;
-      top: 64%;
-      width: 16.5%;
-      height: 7.2%;
+    .v29 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: .8;
+      transform: translateY(1px);
     }
-
-    .hotspot.v29-music {
-      left: 51%;
-      top: 64%;
-      width: 13.5%;
-      height: 7.2%;
+    .v29 .top {
+      font-family: var(--display);
+      font-size: clamp(1.95rem, 3vw, 2.9rem);
+      font-style: italic;
+      letter-spacing: -.02em;
+      line-height: 1;
     }
-
-    .hotspot.amplivibe {
-      left: 75%;
-      top: 64%;
-      width: 15.8%;
-      height: 7.2%;
+    .v29 .sub {
+      font-family: var(--display);
+      font-size: clamp(.62rem, .8vw, .82rem);
+      letter-spacing: .35em;
+      color: var(--muted);
+      padding-left: .35em;
+      line-height: 1;
+      transform: translateY(-2px);
     }
-
-    @media (max-width: 1100px) {
-      .hotspot.full-volume {
-        left: 23%;
-        top: 63%;
-        width: 18%;
-        height: 7.5%;
-      }
-
-      .hotspot.v29-music {
-        left: 50%;
-        top: 63%;
-        width: 15%;
-        height: 7.5%;
-      }
-
-      .hotspot.amplivibe {
-        left: 74%;
-        top: 63%;
-        width: 17%;
-        height: 7.5%;
-      }
+    .amp {
+      font-family: var(--display);
+      font-size: clamp(.74rem, 1vw, .95rem);
+      letter-spacing: .02em;
+      transform: rotate(-2deg) scaleX(1.02);
     }
-
-    @media (max-width: 640px) {
-      :root {
-        --max-width: 100%;
+    @media (max-width: 760px) {
+      .button-row {
+        bottom: 10.8%;
+        width: min(72vw, 520px);
+        gap: 12px;
       }
-
-      .hotspot.full-volume {
-        left: 22%;
-        top: 62%;
-        width: 19%;
-        height: 8.5%;
-      }
-
-      .hotspot.v29-music {
-        left: 49%;
-        top: 62%;
-        width: 17%;
-        height: 8.5%;
-      }
-
-      .hotspot.amplivibe {
-        left: 72%;
-        top: 62%;
-        width: 18%;
-        height: 8.5%;
-      }
+      .full { font-size: .64rem; }
+      .v29 .top { font-size: 1.55rem; }
+      .v29 .sub { font-size: .5rem; letter-spacing: .26em; }
+      .amp { font-size: .64rem; }
     }
-
     @media (max-width: 420px) {
-      .hotspot.full-volume {
-        left: 21%;
-        top: 61%;
-        width: 20%;
-        height: 9%;
+      .button-row {
+        bottom: 10.4%;
+        width: 72vw;
+        gap: 8px;
       }
-
-      .hotspot.v29-music {
-        left: 48%;
-        top: 61%;
-        width: 18%;
-        height: 9%;
-      }
-
-      .hotspot.amplivibe {
-        left: 71%;
-        top: 61%;
-        width: 19%;
-        height: 9%;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
+      .full { font-size: .54rem; }
+      .v29 .top { font-size: 1.1rem; }
+      .v29 .sub { font-size: .42rem; letter-spacing: .2em; }
+      .amp { font-size: .54rem; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <figure class="image-shell">
-      <img
-        src="./rdac-cover.jpg"
-        alt="RDAC cover artwork with silver lettering and a spade symbol on a black background."
-        width="1600"
-        height="900"
-        loading="eager"
-        decoding="async"
-      />
-
-      <a
-        class="hotspot full-volume"
-        href="https://example.com/full-volume"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Full volume"
-      ></a>
-
-      <a
-        class="hotspot v29-music"
-        href="https://example.com/v29-music"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="V29 music"
-      ></a>
-
-      <a
-        class="hotspot amplivibe"
-        href="https://example.com/amplivibe"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="AmpliVibe"
-      ></a>
-    </figure>
+  <main class="hero">
+    <img class="hero-media" src="rdac-cover-cleaned.jpg" alt="RDAC artwork" width="1366" height="768" loading="eager" decoding="async" />
+    <div class="overlay" aria-hidden="true"></div>
+    <nav class="button-row" aria-label="Main destination buttons">
+      <a class="btn full" href="https://example.com/full-volume" target="_blank" rel="noopener noreferrer">Full Volume</a>
+      <a class="btn v29" href="https://example.com/v29-music" target="_blank" rel="noopener noreferrer"><span class="top">V29</span><span class="sub">Music</span></a>
+      <a class="btn amp" href="https://example.com/amplivibe" target="_blank" rel="noopener noreferrer">Amplivibe</a>
+    </nav>
   </main>
 </body>
 </html>
