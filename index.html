@@ -41,7 +41,6 @@
       object-position: center top;
       display: block;
       z-index: 0;
-      opacity: 1;
     }
     .overlay {
       position: absolute;
@@ -65,15 +64,15 @@
       grid-template-columns: 1fr 1fr 1fr;
       gap: clamp(8px, 1.6vw, 20px);
       align-items: center;
-      transform: translateY(33vh);
+      transform: translateY(44vh);
     }
     .btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: clamp(36px, 6vw, 72px);
-      padding: clamp(8px, 1.4vw, 16px);
-      border-radius: clamp(16px, 2.4vw, 28px);
+      min-height: clamp(32px, 5.2vw, 60px);
+      padding: clamp(7px, 1.2vw, 13px);
+      border-radius: clamp(14px, 2vw, 24px);
       text-decoration: none;
       color: var(--text);
       background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
@@ -103,7 +102,7 @@
       white-space: nowrap;
     }
     .full {
-      font-size: clamp(.58rem, .95vw, .9rem);
+      font-size: clamp(.52rem, .85vw, .82rem);
       letter-spacing: .08em;
       transform: scaleX(1.03) scaleY(.86);
     }
@@ -114,34 +113,34 @@
       justify-content: center;
     }
     .v29 .top {
-      font-size: clamp(1.05rem, 2.35vw, 2.2rem);
+      font-size: clamp(.95rem, 2.1vw, 2rem);
       font-style: italic;
       letter-spacing: -.02em;
     }
     .v29 .sub {
-      font-size: clamp(.36rem, .6vw, .62rem);
-      letter-spacing: .36em;
+      font-size: clamp(.3rem, .52vw, .52rem);
+      letter-spacing: .34em;
       color: var(--muted);
-      padding-left: .36em;
-      margin-top: .08rem;
+      padding-left: .34em;
+      margin-top: .06rem;
     }
     .amp {
-      font-size: clamp(.55rem, .9vw, .88rem);
+      font-size: clamp(.5rem, .82vw, .78rem);
       letter-spacing: .03em;
-      transform: rotate(-2deg) scaleX(1.02);
+      transform: scaleX(1.02);
     }
     @media (max-width: 700px) {
       .content { padding: 10px; }
-      .button-row { width: 94vw; gap: 7px; transform: translateY(31vh); }
-      .btn { min-height: clamp(34px, 11vw, 54px); border-radius: 16px; }
-      .full { font-size: clamp(.44rem, 2.2vw, .64rem); }
-      .v29 .top { font-size: clamp(.82rem, 3.8vw, 1.25rem); }
-      .v29 .sub { font-size: clamp(.28rem, 1.1vw, .4rem); letter-spacing: .22em; }
-      .amp { font-size: clamp(.42rem, 2vw, .62rem); }
+      .button-row { width: 94vw; gap: 7px; transform: translateY(40vh); }
+      .btn { min-height: clamp(30px, 9vw, 48px); border-radius: 14px; }
+      .full { font-size: clamp(.38rem, 1.9vw, .56rem); }
+      .v29 .top { font-size: clamp(.72rem, 3.2vw, 1.05rem); }
+      .v29 .sub { font-size: clamp(.24rem, .9vw, .34rem); letter-spacing: .18em; }
+      .amp { font-size: clamp(.36rem, 1.7vw, .52rem); }
     }
     @media (max-width: 420px) {
-      .button-row { gap: 6px; transform: translateY(29vh); }
-      .btn { padding: 7px 7px; }
+      .button-row { gap: 6px; transform: translateY(38vh); }
+      .btn { padding: 6px 6px; }
     }
   </style>
 </head>
