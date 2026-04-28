@@ -17,7 +17,7 @@
     .hero{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;z-index:0;transform:scale(.92);transform-origin:center center}
     .overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.03), rgba(0,0,0,.10) 42%, rgba(0,0,0,.24) 72%, rgba(0,0,0,.38));pointer-events:none;z-index:1}
     .content{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-start;justify-content:center;padding:0 clamp(14px,4vw,40px)}
-    .button-row{width:min(92vw,1100px);display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(8px,1.6vw,20px);align-items:center;transform:translateY(56vh)}
+    .button-row{width:min(92vw,1100px);display:grid;grid-template-columns:1fr 1fr 1fr;gap:clamp(8px,1.6vw,20px);align-items:center;transform:translateY(62vh)}
     .btn{display:flex;align-items:center;justify-content:center;min-height:clamp(32px,5.2vw,60px);padding:clamp(7px,1.2vw,13px);border-radius:clamp(14px,2vw,24px);text-decoration:none;color:var(--text);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 12px 24px rgba(0,0,0,.24);transition:transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;overflow:hidden}
     .btn:hover,.btn:focus-visible{transform:translateY(-2px);background:linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.05));border-color:rgba(255,255,255,.28);outline:none;box-shadow:0 16px 30px rgba(0,0,0,.30)}
     .btn span{position:relative;z-index:1;font-family:var(--display);text-transform:uppercase;text-align:center;line-height:.95;text-shadow:0 2px 12px rgba(0,0,0,.25);white-space:nowrap}
@@ -28,7 +28,7 @@
     .amp{font-size:clamp(.5rem,.82vw,.78rem);letter-spacing:.03em;transform:scaleX(1.02)}
     @media (max-width:700px){
       .content{padding:10px}
-      .button-row{width:94vw;gap:7px;transform:translateY(52vh)}
+      .button-row{width:94vw;gap:7px;transform:translateY(58vh)}
       .btn{min-height:clamp(30px,9vw,48px);border-radius:14px}
       .full{font-size:clamp(.38rem,1.9vw,.56rem)}
       .v29 .top{font-size:clamp(.72rem,3.2vw,1.05rem)}
@@ -36,7 +36,7 @@
       .amp{font-size:clamp(.36rem,1.7vw,.52rem)}
     }
     @media (max-width:420px){
-      .button-row{gap:6px;transform:translateY(50vh)}
+      .button-row{gap:6px;transform:translateY(56vh)}
       .btn{padding:6px 6px}
     }
   </style>
